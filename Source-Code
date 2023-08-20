@@ -369,21 +369,35 @@ percent_profit_asset_13 = ((piy_dgr_13 - total_cost_13) / total_cost_13) * 100
 percent_profit_asset_14 = ((piy_dgr_14 - total_cost_14) / total_cost_14) * 100
 percent_profit_asset_15 = ((piy_dgr_15 - total_cost_15) / total_cost_15) * 100
 
-table.cell(table1, 8, 2,  str.tostring(math.round(percent_profit_asset_01, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 3,  str.tostring(math.round(percent_profit_asset_02, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 4,  str.tostring(math.round(percent_profit_asset_03, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 5,  str.tostring(math.round(percent_profit_asset_04, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 6,  str.tostring(math.round(percent_profit_asset_05, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 7,  str.tostring(math.round(percent_profit_asset_06, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 8,  str.tostring(math.round(percent_profit_asset_07, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 9,  str.tostring(math.round(percent_profit_asset_08, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 10, str.tostring(math.round(percent_profit_asset_09, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 11, str.tostring(math.round(percent_profit_asset_10, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 12, str.tostring(math.round(percent_profit_asset_11, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 13, str.tostring(math.round(percent_profit_asset_12, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 14, str.tostring(math.round(percent_profit_asset_13, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 15, str.tostring(math.round(percent_profit_asset_14, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-table.cell(table1, 8, 16, str.tostring(math.round(percent_profit_asset_15, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+f_renk(x) =>
+    r = 
+      -50 >= x and x > -100     ? color.rgb(255,0,0)       :  
+      -25 >= x and x > -50      ? color.rgb(204, 0, 0)     : 
+      -10 >= x and x > -25      ? color.rgb(224, 102, 102) :  
+      0   >  x and x > -10      ? color.rgb(234, 153, 153) :  
+      0   <  x and x < 10       ? color.rgb(150, 172, 142) :  
+      10  <= x and x < 25       ? color.rgb(153, 216, 126) :  
+      25  <= x and x < 50       ? color.rgb(147, 196, 125) :  
+      50  <= x and x < 100      ? color.rgb(106, 168, 79)  :  
+      100 <= x                  ? color.rgb(0, 255, 0)     :  
+      color(na)
+//
+
+table.cell(table1, 8, 2,  str.tostring(math.round(percent_profit_asset_01, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_01), text_color = color.white)
+table.cell(table1, 8, 3,  str.tostring(math.round(percent_profit_asset_02, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_02), text_color = color.white)
+table.cell(table1, 8, 4,  str.tostring(math.round(percent_profit_asset_03, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_03), text_color = color.white)
+table.cell(table1, 8, 5,  str.tostring(math.round(percent_profit_asset_04, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_04), text_color = color.white)
+table.cell(table1, 8, 6,  str.tostring(math.round(percent_profit_asset_05, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_05), text_color = color.white)
+table.cell(table1, 8, 7,  str.tostring(math.round(percent_profit_asset_06, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_06), text_color = color.white)
+table.cell(table1, 8, 8,  str.tostring(math.round(percent_profit_asset_07, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_07), text_color = color.white)
+table.cell(table1, 8, 9,  str.tostring(math.round(percent_profit_asset_08, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_09), text_color = color.white)
+table.cell(table1, 8, 10, str.tostring(math.round(percent_profit_asset_09, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_09), text_color = color.white)
+table.cell(table1, 8, 11, str.tostring(math.round(percent_profit_asset_10, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_10), text_color = color.white)
+table.cell(table1, 8, 12, str.tostring(math.round(percent_profit_asset_11, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_11), text_color = color.white)
+table.cell(table1, 8, 13, str.tostring(math.round(percent_profit_asset_12, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_12), text_color = color.white)
+table.cell(table1, 8, 14, str.tostring(math.round(percent_profit_asset_13, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_13), text_color = color.white)
+table.cell(table1, 8, 15, str.tostring(math.round(percent_profit_asset_14, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_14), text_color = color.white)
+table.cell(table1, 8, 16, str.tostring(math.round(percent_profit_asset_15, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor  = f_renk(percent_profit_asset_15), text_color = color.white)
 
 
 // ╠═══════════════════════════════════ P R O F I T - P E R C E N T ═══════════════════════════════════════╣
