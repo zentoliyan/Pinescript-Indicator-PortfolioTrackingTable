@@ -1,0 +1,424 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © zeubetella
+
+//@version=5
+indicator("Portfolio Tracking Table")
+
+rawNumberforTable1 = 50
+var string TableGroup1 = "Table Settings"
+string  Table1PosInYaxis = input.string("middle", "Tablo Pozisyonu", inline = "11", options = ["top", "middle", "bottom"], group = TableGroup1)
+string  Table1PosInXaxis = input.string("center", "", inline = "11", options = ["left", "center", "right"], group = TableGroup1)
+var table table1 = table.new(Table1PosInYaxis + "_" + Table1PosInXaxis, 50, rawNumberforTable1 + 1, color.new(color.black , 40), color.new(color.white , 0), 1,color.new(color.white , 0), 1)
+
+textstyleFORtable1 = input.string(size.large, "", options=[size.small, size.normal, size.large], group = TableGroup1)
+
+// ╠══════════════════════════════════════════════════════════════════════════╣
+
+group_01 = "First Asset"
+group_02 = "Second Asset"
+group_03 = "Third Asset"
+group_04 = "Fourth Asset"
+group_05 = "Fifth Asset"
+group_06 = "Sixth Asset"
+group_07 = "Seventh Asset"
+group_08 = "Eighth Asset"
+group_09 = "Ninth Asset"
+group_10 = "Tenth Asset"
+group_11 = "Eleventh Asset"
+group_12 = "Twelfth Asset"
+group_13 = "Thirteenth Asset"
+group_14 = "Fourteenth Asset"
+group_15 = "Fifteenth Asset"
+
+// ╠══════════════════════════════════════════════════════════════════════════╣
+
+symbol01 = input.symbol(title="Asset Name", defval="BIST:KCHOL", group=group_01)
+symbol02 = input.symbol(title="Asset Name", defval="BIST:TUPRS", group=group_02)
+symbol03 = input.symbol(title="Asset Name", defval="BIST:ALARK", group=group_03)
+symbol04 = input.symbol(title="Asset Name", defval="BIST:GARAN", group=group_04)
+symbol05 = input.symbol(title="Asset Name", defval="BIST:TURSG", group=group_05)
+symbol06 = input.symbol(title="Asset Name", defval="BIST:FROTO", group=group_06)
+symbol07 = input.symbol(title="Asset Name", defval="BIST:DOAS",  group=group_07)
+symbol08 = input.symbol(title="Asset Name", defval="BIST:DESA",  group=group_08)
+symbol09 = input.symbol(title="Asset Name", defval="BIST:VESBE", group=group_09)
+symbol10 = input.symbol(title="Asset Name", defval="BIST:TOASO", group=group_10)
+symbol11 = input.symbol(title="Asset Name", defval="BIST:THYAO", group=group_11)
+symbol12 = input.symbol(title="Asset Name", defval="BIST:SISE",  group=group_12)
+symbol13 = input.symbol(title="Asset Name", defval="BIST:ENJSA", group=group_13)
+symbol14 = input.symbol(title="Asset Name", defval="BIST:TMSN",  group=group_14)
+symbol15 = input.symbol(title="Asset Name", defval="BIST:TTRAK", group=group_15)
+
+// ╠══════════════════════════════════════════════════════════════════════════╣
+
+table.cell(table1, 0, 0, "Asset Information", text_halign = text.align_center, text_size= textstyleFORtable1 , text_color=color.white)
+table.cell(table1, 1, 0, ""   , text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+table.merge_cells(table_id = table1, start_column = 0, start_row = 0, end_column = 1, end_row = 0)
+
+table.cell(table1, 2, 0, "Buy Values", text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 0, "")
+table.cell(table1, 4, 0, "")
+table.merge_cells(table_id = table1, start_column = 2, start_row = 0, end_column = 4, end_row = 0)
+
+table.cell(table1, 5, 0, "Curent Values", text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 0, "")
+table.merge_cells(table_id = table1, start_column = 5, start_row = 0, end_column = 6, end_row = 0)
+
+table.cell(table1, 7, 0, "Profit", text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 0, "")
+table.merge_cells(table_id = table1, start_column = 7, start_row = 0, end_column = 8, end_row = 0)
+
+// ╠══════════════════════════════════════════════════════════════════════════╣
+
+table.cell(table1, 0, 1, "Number" , text_halign = text.align_center, text_size= textstyleFORtable1 , text_color=color.white)
+table.cell(table1, 1, 1, "Symbol" , text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 2, 1, "Asset QTY" , text_halign = text.align_center, text_size= textstyleFORtable1 , text_color=color.white)
+table.cell(table1, 3, 1, "Purchase Price"   , text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 1, "Total Cost"   , text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 5, 1, "-- Price --" , text_halign = text.align_center, text_size= textstyleFORtable1 , text_color=color.white)
+table.cell(table1, 6, 1, "--- Current Value ---"   , text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 7, 1, "---- Nominal ----" , text_halign = text.align_center, text_size= textstyleFORtable1 , text_color=color.white)
+table.cell(table1, 8, 1, "---- Percent ----"   , text_halign = text.align_center, text_size= textstyleFORtable1, text_color=color.white)
+
+// ╠═══════════════════════════════════ S Y M B O L S ═══════════════════════════════════════╣
+
+table.cell(table1, 0, 2, "01", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 2, symbol01, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 3, "02", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 3, symbol02, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 4, "03", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 4, symbol03, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 5, "04", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 5, symbol04, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 6, "05", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 6, symbol05, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 7, "06", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 7, symbol06, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 8, "07", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 8, symbol07, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 9, "08", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 9, symbol08, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 10, "09", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 10, symbol09, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 11, "10", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 11, symbol10, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 12, "11", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 12, symbol11, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 13, "12", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 13, symbol12, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 14, "13", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 14, symbol13, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 15, "14", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 15, symbol14, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.cell(table1, 0, 16, "15", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 16, symbol15, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+// ╠═══════════════════════════════════ S Y M B O L S ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ N U M B E R O F S H A R E S ═══════════════════════════════════════╣
+
+lot_say_01 = input(0, "QTY", group=group_01)
+lot_say_02 = input(0, "QTY", group=group_02)
+lot_say_03 = input(0, "QTY", group=group_03)
+lot_say_04 = input(0, "QTY", group=group_04)
+lot_say_05 = input(0, "QTY", group=group_05)
+lot_say_06 = input(0, "QTY", group=group_06)
+lot_say_07 = input(0, "QTY", group=group_07)
+lot_say_08 = input(0, "QTY", group=group_08)
+lot_say_09 = input(0, "QTY", group=group_09)
+lot_say_10 = input(0, "QTY", group=group_10)
+lot_say_11 = input(0, "QTY", group=group_11)
+lot_say_12 = input(0, "QTY", group=group_12)
+lot_say_13 = input(0, "QTY", group=group_13)
+lot_say_14 = input(0, "QTY", group=group_14)
+lot_say_15 = input(0, "QTY", group=group_15)
+
+table.cell(table1, 2, 2,  str.tostring(lot_say_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 3,  str.tostring(lot_say_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 4,  str.tostring(lot_say_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 5,  str.tostring(lot_say_04), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 6,  str.tostring(lot_say_05), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 7,  str.tostring(lot_say_06), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 8,  str.tostring(lot_say_07), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 9,  str.tostring(lot_say_08), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 10, str.tostring(lot_say_09), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 11, str.tostring(lot_say_10), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 12, str.tostring(lot_say_11), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 13, str.tostring(lot_say_12), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 14, str.tostring(lot_say_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 15, str.tostring(lot_say_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 16, str.tostring(lot_say_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+
+// ╠═══════════════════════════════════ N U M B E R O F S H A R E S ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ C O S T S ═══════════════════════════════════════╣
+
+cost_01 = input.float(0, "Owning Cost", group=group_01)
+cost_02 = input.float(0, "Owning Cost", group=group_02)
+cost_03 = input.float(0, "Owning Cost", group=group_03)
+cost_04 = input.float(0, "Owning Cost", group=group_04)
+cost_05 = input.float(0, "Owning Cost", group=group_05)
+cost_06 = input.float(0, "Owning Cost", group=group_06)
+cost_07 = input.float(0, "Owning Cost", group=group_07)
+cost_08 = input.float(0, "Owning Cost", group=group_08)
+cost_09 = input.float(0, "Owning Cost", group=group_09)
+cost_10 = input.float(0, "Owning Cost", group=group_10)
+cost_11 = input.float(0, "Owning Cost", group=group_11)
+cost_12 = input.float(0, "Owning Cost", group=group_12)
+cost_13 = input.float(0, "Owning Cost", group=group_13)
+cost_14 = input.float(0, "Owning Cost", group=group_14)
+cost_15 = input.float(0, "Owning Cost", group=group_15)
+
+
+table.cell(table1, 3, 2,  str.tostring(cost_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 3,  str.tostring(cost_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 4,  str.tostring(cost_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 5,  str.tostring(cost_04), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 6,  str.tostring(cost_05), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 7,  str.tostring(cost_06), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 8,  str.tostring(cost_07), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 9,  str.tostring(cost_08), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 10, str.tostring(cost_09), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 11, str.tostring(cost_10), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 12, str.tostring(cost_11), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 13, str.tostring(cost_12), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 14, str.tostring(cost_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 15, str.tostring(cost_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 16, str.tostring(cost_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+
+// ╠═══════════════════════════════════ C O S T S ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ T O T A L C O S T S ═══════════════════════════════════════╣
+
+total_cost_01 = lot_say_01 * cost_01
+total_cost_02 = lot_say_02 * cost_02
+total_cost_03 = lot_say_03 * cost_03
+total_cost_04 = lot_say_04 * cost_04
+total_cost_05 = lot_say_05 * cost_05
+total_cost_06 = lot_say_06 * cost_06
+total_cost_07 = lot_say_07 * cost_07
+total_cost_08 = lot_say_08 * cost_08
+total_cost_09 = lot_say_09 * cost_09
+total_cost_10 = lot_say_10 * cost_10
+total_cost_11 = lot_say_11 * cost_11
+total_cost_12 = lot_say_12 * cost_12
+total_cost_13 = lot_say_13 * cost_13
+total_cost_14 = lot_say_14 * cost_14
+total_cost_15 = lot_say_15 * cost_15
+
+table.cell(table1, 4, 2,  str.tostring(total_cost_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 3,  str.tostring(total_cost_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 4,  str.tostring(total_cost_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 5,  str.tostring(total_cost_04), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 6,  str.tostring(total_cost_05), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 7,  str.tostring(total_cost_06), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 8,  str.tostring(total_cost_07), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 9,  str.tostring(total_cost_08), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 10, str.tostring(total_cost_09), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 11, str.tostring(total_cost_10), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 12, str.tostring(total_cost_11), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 13, str.tostring(total_cost_12), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 14, str.tostring(total_cost_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 15, str.tostring(total_cost_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 4, 16, str.tostring(total_cost_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+
+// ╠═══════════════════════════════════ T O T A L C O S T S ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ C U R R E N T P R I C E ═══════════════════════════════════════╣
+
+current_price_01 = math.round(request.security(symbol01, "D", close),2)
+current_price_02 = math.round(request.security(symbol02, "D", close),2)
+current_price_03 = math.round(request.security(symbol03, "D", close),2)
+current_price_04 = math.round(request.security(symbol04, "D", close),2)
+current_price_05 = math.round(request.security(symbol05, "D", close),2)
+current_price_06 = math.round(request.security(symbol06, "D", close),2)
+current_price_07 = math.round(request.security(symbol07, "D", close),2)
+current_price_08 = math.round(request.security(symbol08, "D", close),2)
+current_price_09 = math.round(request.security(symbol09, "D", close),2)
+current_price_10 = math.round(request.security(symbol10, "D", close),2)
+current_price_11 = math.round(request.security(symbol11, "D", close),2)
+current_price_12 = math.round(request.security(symbol12, "D", close),2)
+current_price_13 = math.round(request.security(symbol13, "D", close),2)
+current_price_14 = math.round(request.security(symbol14, "D", close),2)
+current_price_15 = math.round(request.security(symbol15, "D", close),2)
+
+table.cell(table1, 5, 2,  str.tostring(current_price_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 3,  str.tostring(current_price_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 4,  str.tostring(current_price_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 5,  str.tostring(current_price_04), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 6,  str.tostring(current_price_05), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 7,  str.tostring(current_price_06), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 8,  str.tostring(current_price_07), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 9,  str.tostring(current_price_08), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 10, str.tostring(current_price_09), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 11, str.tostring(current_price_10), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 12, str.tostring(current_price_11), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 13, str.tostring(current_price_12), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 14, str.tostring(current_price_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 15, str.tostring(current_price_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 5, 16, str.tostring(current_price_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+// ╠═══════════════════════════════════ C U R R E N T P R I C E ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ M A R K E T V A L U E ═══════════════════════════════════════╣
+
+piy_dgr_01 = lot_say_01 * current_price_01
+piy_dgr_02 = lot_say_02 * current_price_02
+piy_dgr_03 = lot_say_03 * current_price_03
+piy_dgr_04 = lot_say_04 * current_price_04
+piy_dgr_05 = lot_say_05 * current_price_05
+piy_dgr_06 = lot_say_06 * current_price_06
+piy_dgr_07 = lot_say_07 * current_price_07
+piy_dgr_08 = lot_say_08 * current_price_08
+piy_dgr_09 = lot_say_09 * current_price_09
+piy_dgr_10 = lot_say_10 * current_price_10
+piy_dgr_11 = lot_say_11 * current_price_11
+piy_dgr_12 = lot_say_12 * current_price_12
+piy_dgr_13 = lot_say_13 * current_price_13
+piy_dgr_14 = lot_say_14 * current_price_14
+piy_dgr_15 = lot_say_15 * current_price_15
+
+table.cell(table1, 6, 2,  str.tostring(piy_dgr_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 3,  str.tostring(piy_dgr_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 4,  str.tostring(piy_dgr_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 5,  str.tostring(piy_dgr_04), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 6,  str.tostring(piy_dgr_05), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 7,  str.tostring(piy_dgr_06), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 8,  str.tostring(piy_dgr_07), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 9,  str.tostring(piy_dgr_08), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 10, str.tostring(piy_dgr_09), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 11, str.tostring(piy_dgr_10), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 12, str.tostring(piy_dgr_11), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 13, str.tostring(piy_dgr_12), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 14, str.tostring(piy_dgr_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 15, str.tostring(piy_dgr_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 6, 16, str.tostring(piy_dgr_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+// ╠═══════════════════════════════════ M A R K E T V A L U E ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ P R O F I T - N O M I N A L ═══════════════════════════════════════╣
+
+nominal_profit_asset_01 = piy_dgr_01 - total_cost_01
+nominal_profit_asset_02 = piy_dgr_02 - total_cost_02
+nominal_profit_asset_03 = piy_dgr_03 - total_cost_03
+nominal_profit_asset_04 = piy_dgr_04 - total_cost_04
+nominal_profit_asset_05 = piy_dgr_05 - total_cost_05
+nominal_profit_asset_06 = piy_dgr_06 - total_cost_06
+nominal_profit_asset_07 = piy_dgr_07 - total_cost_07
+nominal_profit_asset_08 = piy_dgr_08 - total_cost_08
+nominal_profit_asset_09 = piy_dgr_09 - total_cost_09
+nominal_profit_asset_10 = piy_dgr_10 - total_cost_10
+nominal_profit_asset_11 = piy_dgr_11 - total_cost_11
+nominal_profit_asset_12 = piy_dgr_12 - total_cost_12
+nominal_profit_asset_13 = piy_dgr_13 - total_cost_13
+nominal_profit_asset_14 = piy_dgr_14 - total_cost_14
+nominal_profit_asset_15 = piy_dgr_15 - total_cost_15
+
+table.cell(table1, 7, 2,  str.tostring(nominal_profit_asset_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 3,  str.tostring(nominal_profit_asset_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 4,  str.tostring(nominal_profit_asset_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 5,  str.tostring(nominal_profit_asset_04), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 6,  str.tostring(nominal_profit_asset_05), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 7,  str.tostring(nominal_profit_asset_06), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 8,  str.tostring(nominal_profit_asset_07), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 9,  str.tostring(nominal_profit_asset_08), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 10, str.tostring(nominal_profit_asset_09), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 11, str.tostring(nominal_profit_asset_10), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 12, str.tostring(nominal_profit_asset_11), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 13, str.tostring(nominal_profit_asset_12), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 14, str.tostring(nominal_profit_asset_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 15, str.tostring(nominal_profit_asset_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 7, 16, str.tostring(nominal_profit_asset_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+// ╠═══════════════════════════════════ P R O F I T - N O M I N A L ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ P R O F I T - P E R C E N T ═══════════════════════════════════════╣
+
+percent_profit_asset_01 = ((piy_dgr_01 - total_cost_01) / total_cost_01) * 100
+percent_profit_asset_02 = ((piy_dgr_02 - total_cost_02) / total_cost_02) * 100
+percent_profit_asset_03 = ((piy_dgr_03 - total_cost_03) / total_cost_03) * 100
+percent_profit_asset_04 = ((piy_dgr_04 - total_cost_04) / total_cost_04) * 100
+percent_profit_asset_05 = ((piy_dgr_05 - total_cost_05) / total_cost_05) * 100
+percent_profit_asset_06 = ((piy_dgr_06 - total_cost_06) / total_cost_06) * 100
+percent_profit_asset_07 = ((piy_dgr_07 - total_cost_07) / total_cost_07) * 100
+percent_profit_asset_08 = ((piy_dgr_08 - total_cost_08) / total_cost_08) * 100
+percent_profit_asset_09 = ((piy_dgr_09 - total_cost_09) / total_cost_09) * 100
+percent_profit_asset_10 = ((piy_dgr_10 - total_cost_10) / total_cost_10) * 100
+percent_profit_asset_11 = ((piy_dgr_11 - total_cost_11) / total_cost_11) * 100
+percent_profit_asset_12 = ((piy_dgr_12 - total_cost_12) / total_cost_12) * 100
+percent_profit_asset_13 = ((piy_dgr_13 - total_cost_13) / total_cost_13) * 100
+percent_profit_asset_14 = ((piy_dgr_14 - total_cost_14) / total_cost_14) * 100
+percent_profit_asset_15 = ((piy_dgr_15 - total_cost_15) / total_cost_15) * 100
+
+table.cell(table1, 8, 2,  str.tostring(math.round(percent_profit_asset_01, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 3,  str.tostring(math.round(percent_profit_asset_02, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 4,  str.tostring(math.round(percent_profit_asset_03, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 5,  str.tostring(math.round(percent_profit_asset_04, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 6,  str.tostring(math.round(percent_profit_asset_05, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 7,  str.tostring(math.round(percent_profit_asset_06, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 8,  str.tostring(math.round(percent_profit_asset_07, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 9,  str.tostring(math.round(percent_profit_asset_08, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 10, str.tostring(math.round(percent_profit_asset_09, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 11, str.tostring(math.round(percent_profit_asset_10, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 12, str.tostring(math.round(percent_profit_asset_11, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 13, str.tostring(math.round(percent_profit_asset_12, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 14, str.tostring(math.round(percent_profit_asset_13, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 15, str.tostring(math.round(percent_profit_asset_14, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 16, str.tostring(math.round(percent_profit_asset_15, 2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+
+// ╠═══════════════════════════════════ P R O F I T - P E R C E N T ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ T O T A L S I D E ═══════════════════════════════════════╣
+
+table.cell(table1, 0, 17, "T O T A L", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 1, 17, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 2, 17, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 3, 17, text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+table.merge_cells(table1, 0, 17, 3, 17)
+
+total_cost_all_asset = total_cost_01 + total_cost_02 + total_cost_03 + total_cost_04 + 
+                         total_cost_05 + total_cost_06 + total_cost_07 + total_cost_08 + total_cost_09 +
+                         total_cost_10 + total_cost_11 + total_cost_12 + total_cost_13 + total_cost_14 +
+                         total_cost_15
+
+table.cell(table1, 4, 17, str.tostring(total_cost_all_asset), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+piy_dgr_all_asset= piy_dgr_01 + piy_dgr_02 + piy_dgr_03 + piy_dgr_04 + 
+                         piy_dgr_05 + piy_dgr_06 + piy_dgr_07 + piy_dgr_08 + piy_dgr_09 +
+                         piy_dgr_10 + piy_dgr_11 + piy_dgr_12 + piy_dgr_13 + piy_dgr_14 +
+                         piy_dgr_15
+
+table.cell(table1, 6, 17, str.tostring(piy_dgr_all_asset), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+// ╠═══════════════════════════════════ T O T A L S I D E ═══════════════════════════════════════╣
+
+// ╠═══════════════════════════════════ P R O F I T ═══════════════════════════════════════╣
+
+nominal_profit_asset_all = piy_dgr_all_asset - total_cost_all_asset
+table.cell(table1, 7, 17, str.tostring(piy_dgr_all_asset), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+percent_profit_asset_all = ((piy_dgr_all_asset - total_cost_all_asset) / total_cost_all_asset) * 100
+table.cell(table1, 8, 17, str.tostring(math.round(percent_profit_asset_all,2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
+// ╠═══════════════════════════════════ P R O F I T ═══════════════════════════════════════╣
