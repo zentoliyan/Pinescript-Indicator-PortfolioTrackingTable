@@ -429,6 +429,6 @@ nominal_profit_asset_all = piy_dgr_all_asset - total_cost_all_asset
 table.cell(table1, 7, 17, str.tostring(piy_dgr_all_asset), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 
 percent_profit_asset_all = ((piy_dgr_all_asset - total_cost_all_asset) / total_cost_all_asset) * 100
-table.cell(table1, 8, 17, str.tostring(math.round(percent_profit_asset_all,2)) + "%", text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+table.cell(table1, 8, 17, (na(percent_profit_asset_all) ? "" : str.tostring(math.round(percent_profit_asset_15, 2)) + "%"), text_halign=text.align_center, text_size=textstyleFORtable1, bgcolor=f_renk(percent_profit_asset_all), text_color=color.white)
 
 // ╠═══════════════════════════════════ P R O F I T ═══════════════════════════════════════╣
