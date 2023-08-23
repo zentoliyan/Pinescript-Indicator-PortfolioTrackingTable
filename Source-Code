@@ -165,7 +165,6 @@ table.cell(table1, 2, 14, str.tostring(lot_say_13), text_halign=text.align_cente
 table.cell(table1, 2, 15, str.tostring(lot_say_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 2, 16, str.tostring(lot_say_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 
-
 // ╠═══════════════════════════════════ N U M B E R O F S H A R E S ═══════════════════════════════════════╣
 
 // ╠═══════════════════════════════════ C O S T S ═══════════════════════════════════════╣
@@ -186,7 +185,6 @@ cost_13 = input.float(0, "Owning Cost", group=group_13)
 cost_14 = input.float(0, "Owning Cost", group=group_14)
 cost_15 = input.float(0, "Owning Cost", group=group_15)
 
-
 table.cell(table1, 3, 2,  str.tostring(cost_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 3, 3,  str.tostring(cost_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 3, 4,  str.tostring(cost_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
@@ -202,7 +200,6 @@ table.cell(table1, 3, 13, str.tostring(cost_12), text_halign=text.align_center, 
 table.cell(table1, 3, 14, str.tostring(cost_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 3, 15, str.tostring(cost_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 3, 16, str.tostring(cost_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
-
 
 // ╠═══════════════════════════════════ C O S T S ═══════════════════════════════════════╣
 
@@ -240,12 +237,9 @@ table.cell(table1, 4, 14, str.tostring(total_cost_13), text_halign=text.align_ce
 table.cell(table1, 4, 15, str.tostring(total_cost_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 4, 16, str.tostring(total_cost_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 
-
 // ╠═══════════════════════════════════ T O T A L C O S T S ═══════════════════════════════════════╣
 
 // ╠═══════════════════════════════════ C U R R E N T P R I C E ═══════════════════════════════════════╣
-
-
 
 current_price_01 = math.round(request.security(symbol01, "1D", close), 2)
 current_price_02 = math.round(request.security(symbol02, "1D", close),2)
