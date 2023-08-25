@@ -165,6 +165,7 @@ table.cell(table1, 2, 14, str.tostring(lot_say_13), text_halign=text.align_cente
 table.cell(table1, 2, 15, str.tostring(lot_say_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 2, 16, str.tostring(lot_say_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 
+
 // ╠═══════════════════════════════════ N U M B E R O F S H A R E S ═══════════════════════════════════════╣
 
 // ╠═══════════════════════════════════ C O S T S ═══════════════════════════════════════╣
@@ -200,6 +201,7 @@ table.cell(table1, 3, 13, str.tostring(cost_12), text_halign=text.align_center, 
 table.cell(table1, 3, 14, str.tostring(cost_13), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 3, 15, str.tostring(cost_14), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
 table.cell(table1, 3, 16, str.tostring(cost_15), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
+
 
 // ╠═══════════════════════════════════ C O S T S ═══════════════════════════════════════╣
 
@@ -242,22 +244,22 @@ table.cell(table1, 4, 16, str.tostring(total_cost_15), text_halign=text.align_ce
 // ╠═══════════════════════════════════ C U R R E N T P R I C E ═══════════════════════════════════════╣
 
 current_price_01 = math.round(request.security(symbol01, "1D", close), 2)
-current_price_02 = math.round(request.security(symbol02, "1D", close),2)
-current_price_03 = math.round(request.security(symbol03, "1D", close),2)
-current_price_04 = math.round(request.security(symbol04, "1D", close),2)
-current_price_05 = math.round(request.security(symbol05, "1D", close),2)
-current_price_06 = math.round(request.security(symbol06, "1D", close),2)
-current_price_07 = math.round(request.security(symbol07, "1D", close),2)
-current_price_08 = math.round(request.security(symbol08, "1D", close),2)
-current_price_09 = math.round(request.security(symbol09, "1D", close),2)
-current_price_10 = math.round(request.security(symbol10, "1D", close),2)
-current_price_11 = math.round(request.security(symbol11, "1D", close),2)
-current_price_12 = math.round(request.security(symbol12, "1D", close),2)
-current_price_13 = math.round(request.security(symbol13, "1D", close),2)
-current_price_14 = math.round(request.security(symbol14, "1D", close),2)
-current_price_15 = math.round(request.security(symbol15, "1D", close),2)
+current_price_02 = math.round(request.security(symbol02, "1D", close), 2)
+current_price_03 = math.round(request.security(symbol03, "1D", close), 2)
+current_price_04 = math.round(request.security(symbol04, "1D", close), 2)
+current_price_05 = math.round(request.security(symbol05, "1D", close), 2)
+current_price_06 = math.round(request.security(symbol06, "1D", close), 2)
+current_price_07 = math.round(request.security(symbol07, "1D", close), 2)
+current_price_08 = math.round(request.security(symbol08, "1D", close), 2)
+current_price_09 = math.round(request.security(symbol09, "1D", close), 2)
+current_price_10 = math.round(request.security(symbol10, "1D", close), 2)
+current_price_11 = math.round(request.security(symbol11, "1D", close), 2)
+current_price_12 = math.round(request.security(symbol12, "1D", close), 2)
+current_price_13 = math.round(request.security(symbol13, "1D", close), 2)
+current_price_14 = math.round(request.security(symbol14, "1D", close), 2)
+current_price_15 = math.round(request.security(symbol15, "1D", close), 2)
 
-if barstate.isrealtime
+if barstate.isconfirmed
     table.cell(table1, 5, 2,  str.tostring(current_price_01), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
     table.cell(table1, 5, 3,  str.tostring(current_price_02), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
     table.cell(table1, 5, 4,  str.tostring(current_price_03), text_halign=text.align_center, text_size=textstyleFORtable1, text_color=color.white)
